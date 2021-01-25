@@ -1,0 +1,3 @@
+include ':mina-socket'
+include ':app'
+rootProject.name = "Mina"
