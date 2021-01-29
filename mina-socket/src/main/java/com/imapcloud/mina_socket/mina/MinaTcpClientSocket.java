@@ -49,11 +49,12 @@ public class MinaTcpClientSocket extends AbstractSocket {
         if (connector.getFilterChain().get(LOGGER) == null) {
             connector.getFilterChain().addLast(LOGGER, new LoggingFilter());
         }
-        if (connector.getFilterChain().get(CODEC) == null) {
-            ProtocolCodecFactory codecFactory = config.codec == null ?
-                    MinaUtil.getTextLineCodecFactory() : (ProtocolCodecFactory) config.codec;
-            connector.getFilterChain().addLast(CODEC, new ProtocolCodecFilter(codecFactory));
-        }
+//        if (connector.getFilterChain().get(CODEC) == null) {
+//            ProtocolCodecFactory codecFactory = config.codec == null ?
+//                    MinaUtil.getTextLineCodecFactory() : (ProtocolCodecFactory) config.codec;
+//            connector.getFilterChain().addLast(CODEC, new ProtocolCodecFilter(codecFactory));
+//        }
+//        connector.getFilterChain().addLast(CODEC, new ProtocolCodecFilter(new MyProtocalCodecFactory(Charset.forName("UTF-8"))));
         connector.setHandler(new MinaClientHandler());
         connector.getSessionConfig().setReadBufferSize(config.bufferSize);
         connector.getSessionConfig().setIdleTime(IdleStatus.WRITER_IDLE, 10);
